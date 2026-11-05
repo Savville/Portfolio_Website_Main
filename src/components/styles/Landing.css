@@ -146,6 +146,23 @@
   pointer-events: none;
   z-index: 2;
 }
+.character-model-fallback .character-rim {
+  opacity: 0.9;
+  transform: translate(-50%, 18%) scale(1.55);
+  animation: backlight 3s ease-in-out infinite alternate;
+}
+.character-fallback-glow {
+  position: absolute;
+  width: min(32vw, 420px);
+  aspect-ratio: 1;
+  top: 28%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  border: 1px solid rgba(245, 155, 248, 0.5);
+  border-radius: 50%;
+  box-shadow: 0 0 80px rgba(245, 155, 248, 0.18), inset 0 0 80px rgba(85, 0, 255, 0.16);
+  opacity: 0.8;
+}
 .character-hover {
   position: absolute;
   width: 280px;
