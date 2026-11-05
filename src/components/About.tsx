@@ -6,9 +6,7 @@ const About = () => {
       <div className="about-me">
         <h3 className="title">About Me</h3>
         <p className="para">
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Hic quis
-          dolores numquam iusto Ratione earum ducimus autem id iure pariatur
-          dolorum quae maiores.
+          I&apos;m George Otana, a data scientist who turns complex data into clear, useful decisions. I work across analytics, machine learning, and data storytelling to help teams understand what is happening, why it matters, and what to do next.
         </p>
       </div>
     </div>

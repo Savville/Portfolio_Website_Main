@@ -60,8 +60,8 @@ const Work = () => {
                   <h3>0{index + 1}</h3>
 
                   <div>
-                    <h4>Project Name</h4>
-                    <p>Category</p>
+                    <h4>{["Customer Churn Signals", "Sales Forecasting", "Public Health Dashboard", "NLP Feedback Miner", "Experiment Analysis", "Data Quality Monitor"][index]}</h4>
+                    <p>{["Predictive analytics", "Time series", "Data visualization", "Natural language", "Product analytics", "Data engineering"][index]}</p>
                   </div>
                 </div>
                 <h4>Tools and features</h4>
