@@ -12,6 +12,8 @@
   box-sizing: border-box;
   will-change: transform;
   overflow: hidden;
+  position: relative;
+  background-color: var(--backgroundColor, #071426);
 }
 .work-container {
   margin: auto;
@@ -38,9 +40,6 @@
   flex-shrink: 0;
   gap: 50px;
   justify-content: start;
-}
-.work-flex .work-box:nth-child(even) {
-  flex-direction: column-reverse;
 }
 .work-flex::before,
 .work-flex::after {
@@ -70,6 +69,35 @@
   line-height: 50px;
   margin: 0;
   font-weight: 600;
+}
+.service-card {
+  justify-content: center;
+  gap: 48px;
+}
+.service-card .work-title {
+  align-items: baseline;
+  margin-bottom: 0;
+}
+.service-card .work-title h4 {
+  color: var(--accentColor);
+  font-size: clamp(32px, 4vw, 64px);
+  letter-spacing: 2px;
+  line-height: 1;
+}
+.service-copy {
+  max-width: 430px;
+}
+.service-copy h5 {
+  margin: 0 0 18px;
+  font-size: 20px;
+  font-weight: 500;
+}
+.service-copy p {
+  margin: 0;
+  color: #eae5ec;
+  font-size: 18px;
+  line-height: 1.6;
+  font-weight: 300;
 }
 
 .work-info h4 {
@@ -174,6 +202,18 @@
   .work-flex {
     margin-left: -30px;
     padding-right: 45px;
+  }
+
+  @media only screen and (max-width: 600px) {
+    .service-card {
+      gap: 30px;
+    }
+    .service-card .work-title h4 {
+      font-size: 34px;
+    }
+    .service-copy p {
+      font-size: 16px;
+    }
   }
 }
 
