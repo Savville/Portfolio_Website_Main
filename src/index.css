@@ -95,6 +95,9 @@ body {
   width: 100%;
   position: relative;
   height: var(--vh);
+  z-index: 1;
+  background-color: var(--backgroundColor);
+  overflow: hidden;
   margin: auto;
   margin-top: 50px;
   margin-bottom: -100px;

@@ -31,6 +31,8 @@ const Work = () => {
       end: `+=${translateX}`, // Use actual scroll width
       scrub: true,
       pin: true,
+      pinSpacing: true,
+      anticipatePin: 1,
       id: "work",
     },
   });
