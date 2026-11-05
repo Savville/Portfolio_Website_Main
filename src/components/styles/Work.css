@@ -262,3 +262,53 @@
     height: auto;
   }
 }
+
+/* Keep services in normal document flow so later sections remain reachable. */
+.work-section {
+  height: auto;
+  min-height: 0;
+  overflow: visible;
+  padding: 80px 0 120px;
+}
+.work-container {
+  height: auto;
+}
+.work-heading {
+  margin-top: 0;
+}
+.work-flex {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0;
+  height: auto;
+  margin-left: 0;
+  padding-right: 0;
+}
+.work-flex::before,
+.work-flex::after {
+  display: none;
+}
+.work-box {
+  width: auto;
+  min-height: 360px;
+  padding: 56px 48px;
+  border-right: 1px solid #363636;
+  border-bottom: 1px solid #363636;
+}
+.work-box:nth-child(even) {
+  border-right: 0;
+}
+@media only screen and (max-width: 700px) {
+  .work-section {
+    padding: 60px 0 80px;
+  }
+  .work-flex {
+    grid-template-columns: 1fr;
+  }
+  .work-box,
+  .work-box:nth-child(even) {
+    min-height: 300px;
+    padding: 40px 24px;
+    border-right: 0;
+  }
+}
