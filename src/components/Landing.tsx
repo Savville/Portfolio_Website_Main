@@ -25,6 +25,13 @@ const Landing = ({ children }: PropsWithChildren) => {
               <div className="landing-h2-info-1">Designer</div>
             </h2>
           </div>
+          <div className="landing-image">
+            <img
+              src="/images/placeholder.webp"
+              alt="George Otana portrait placeholder"
+            />
+            <span>Replace with George&apos;s image</span>
+          </div>
         </div>
         {children}
       </div>

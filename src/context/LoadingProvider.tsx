@@ -24,7 +24,9 @@ export const LoadingProvider = ({ children }: PropsWithChildren) => {
     setIsLoading,
     setLoading,
   };
-  useEffect(() => {}, [loading]);
+  useEffect(() => {
+    setLoading(100);
+  }, []);
 
   return (
     <LoadingContext.Provider value={value as LoadingType}>
