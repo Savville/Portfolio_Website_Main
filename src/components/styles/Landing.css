@@ -19,8 +19,8 @@
   position: fixed;
   width: 300px;
   height: 300px;
-  background-color: #fb8dff;
-  box-shadow: inset -50px 40px 50px rgba(84, 0, 255, 0.6);
+  background-color: #4aa3ff;
+  box-shadow: inset -50px 40px 50px rgba(0, 55, 180, 0.65);
   filter: blur(60px);
   border-radius: 50%;
   animation: loadingCircle 5s linear infinite;
@@ -58,8 +58,8 @@
   display: none;
   width: 300px;
   height: 300px;
-  background-color: #fb8dff;
-  box-shadow: inset -50px 40px 50px rgba(84, 0, 255, 0.6);
+  background-color: #4aa3ff;
+  box-shadow: inset -50px 40px 50px rgba(0, 55, 180, 0.65);
   filter: blur(50px);
   border-radius: 50%;
   animation: loadingCircle2 5s linear infinite;
@@ -72,24 +72,50 @@
 .landing-video,
 .landing-image {
   position: absolute;
-  bottom: 0;
-  height: 95%;
+  top: 50%;
+  bottom: auto;
+  width: clamp(160px, 22vw, 280px);
+  height: clamp(260px, 58vh, 500px);
   left: 50%;
-  transform: translateX(-50%);
+  transform: translate(-50%, -50%);
 }
 .landing-image img {
+  display: block;
+  width: 100%;
   height: 100%;
+  object-fit: cover;
+  border-radius: 12px;
   z-index: 2;
   position: relative;
+}
+.landing-image {
+  z-index: 1;
+  opacity: 0.9;
+}
+.landing-image span {
+  position: absolute;
+  z-index: 3;
+  left: 50%;
+  bottom: 12%;
+  transform: translateX(-50%);
+  width: max-content;
+  padding: 8px 14px;
+  border: 1px solid rgba(255, 255, 255, 0.35);
+  border-radius: 999px;
+  background: rgba(7, 20, 38, 0.82);
+  color: #fff;
+  font-size: 12px;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
 }
 .character-rim {
   position: absolute;
   width: 400px;
   height: 400px;
   z-index: 1;
-  background-color: #f59bf8;
+  background-color: #63b5ff;
   transform: translate(-50%, 36%) scaleX(1.4);
-  box-shadow: inset 66px 35px 85px 0px rgba(85, 0, 255, 0.65);
+  box-shadow: inset 66px 35px 85px 0px rgba(0, 55, 180, 0.65);
   filter: blur(50px);
   border-radius: 50%;
   top: 50%;
@@ -160,7 +186,7 @@
   transform: translate(-50%, -50%);
   border: 1px solid rgba(245, 155, 248, 0.5);
   border-radius: 50%;
-  box-shadow: 0 0 80px rgba(245, 155, 248, 0.18), inset 0 0 80px rgba(85, 0, 255, 0.16);
+  box-shadow: 0 0 80px rgba(99, 181, 255, 0.18), inset 0 0 80px rgba(0, 55, 180, 0.2);
   opacity: 0.8;
 }
 .character-hover {
@@ -204,8 +230,8 @@
   position: absolute;
   right: 50%;
   transform: translateX(50%);
-  bottom: 40px;
-  top: inherit;
+  top: 51%;
+  bottom: auto;
   z-index: 9;
 }
 .landing-info h3 {
@@ -217,15 +243,16 @@
 }
 .landing-info h2 {
   margin: 0;
-  margin-top: -20px;
-  margin-left: 20px;
+  margin-top: 10px;
+  margin-left: 0;
   font-family: "Geist", sans-serif;
   font-weight: 600;
   font-size: 32px;
   line-height: 40px;
   position: relative;
   display: flex;
-  flex-wrap: nowrap;
+  flex-direction: column;
+  gap: 8px;
   text-transform: uppercase;
   letter-spacing: 2px;
 }
@@ -234,32 +261,17 @@
   top: 0;
 }
 h2.landing-info-h2 {
-  color: #c481ff;
+  color: #8fc9ff;
   font-size: 42px;
-  width: 120%;
+  width: auto;
   margin: 0;
   font-family: "Geist", sans-serif;
   font-weight: 600;
   position: relative;
-  margin-left: -5px;
-}
-.landing-h2-2 {
-  position: absolute;
-  top: 0;
+  height: auto;
 }
 .landing-info-h2::after {
-  content: "";
-  position: absolute;
-  width: 100%;
-  height: 120%;
-  z-index: 3;
-  background-image: linear-gradient(
-    0deg,
-    var(--backgroundColor) 40%,
-    rgba(0, 0, 0, 0) 110%
-  );
-  top: 0;
-  left: 0;
+  content: none;
 }
 @media screen and (min-width: 500px) {
   .landing-circle2 {

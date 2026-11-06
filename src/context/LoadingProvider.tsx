@@ -24,7 +24,6 @@ export const LoadingProvider = ({ children }: PropsWithChildren) => {
     setIsLoading,
     setLoading,
   };
-
   useEffect(() => {
     const timer = setTimeout(() => {
       setLoading(100);

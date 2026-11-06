@@ -1,74 +1,87 @@
 import "./styles/Work.css";
-import WorkImage from "./WorkImage";
-import gsap from "gsap";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
-import { useGSAP } from "@gsap/react";
+import { useEffect } from "react";
 
-gsap.registerPlugin(useGSAP);
+const services = [
+  {
+    number: "01",
+    title: "ANALYZE",
+    subtitle: "From question to insight",
+    description:
+      "I explore messy datasets, find the signal, and communicate the patterns that help people make confident decisions.",
+  },
+  {
+    number: "02",
+    title: "MODEL",
+    subtitle: "Predict what comes next",
+    description:
+      "I build practical, explainable models for forecasting, classification, and experimentation without losing sight of the people using them.",
+  },
+  {
+    number: "03",
+    title: "DATA ANALYSIS",
+    subtitle: "Turn data into direction",
+    description:
+      "I clean, connect, and investigate complex data so teams can understand what is happening and decide what to do next.",
+  },
+  {
+    number: "04",
+    title: "MACHINE LEARNING",
+    subtitle: "Build useful intelligence",
+    description:
+      "I develop reliable machine learning workflows that balance measurable performance with clarity, maintainability, and real-world value.",
+  },
+  {
+    number: "05",
+    title: "DATA VISUALIZATION",
+    subtitle: "Make the signal visible",
+    description:
+      "I design clear dashboards and visual stories that make trends, relationships, and opportunities easy to understand.",
+  },
+  {
+    number: "06",
+    title: "EXPERIMENTATION",
+    subtitle: "Learn what works",
+    description:
+      "I use thoughtful experiments and evaluation to turn assumptions into evidence and improve products with confidence.",
+  },
+];
 
 const Work = () => {
-  useGSAP(() => {
-  let translateX: number = 0;
+  useEffect(() => {
+    const cards = document.querySelectorAll<HTMLElement>(".service-card");
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add("is-visible");
+          }
+        });
+      },
+      { threshold: 0.25 }
+    );
 
-  function setTranslateX() {
-    const box = document.getElementsByClassName("work-box");
-    const rectLeft = document
-      .querySelector(".work-container")!
-      .getBoundingClientRect().left;
-    const rect = box[0].getBoundingClientRect();
-    const parentWidth = box[0].parentElement!.getBoundingClientRect().width;
-    let padding: number =
-      parseInt(window.getComputedStyle(box[0]).padding) / 2;
-    translateX = rect.width * box.length - (rectLeft + parentWidth) + padding;
-  }
+    cards.forEach((card) => observer.observe(card));
+    return () => observer.disconnect();
+  }, []);
 
-  setTranslateX();
-
-  let timeline = gsap.timeline({
-    scrollTrigger: {
-      trigger: ".work-section",
-      start: "top top",
-      end: `+=${translateX}`, // Use actual scroll width
-      scrub: true,
-      pin: true,
-      id: "work",
-    },
-  });
-
-  timeline.to(".work-flex", {
-    x: -translateX,
-    ease: "none",
-  });
-
-  // Clean up (optional, good practice)
-  return () => {
-    timeline.kill();
-    ScrollTrigger.getById("work")?.kill();
-  };
-}, []);
   return (
     <div className="work-section" id="work">
       <div className="work-container section-container">
-        <h2>
-          My <span>Work</span>
+        <h2 className="work-heading">
+          What <span>I Do</span>
         </h2>
         <div className="work-flex">
-          {[...Array(6)].map((_value, index) => (
-            <div className="work-box" key={index}>
-              <div className="work-info">
-                <div className="work-title">
-                  <h3>0{index + 1}</h3>
-
-                  <div>
-                    <h4>{["Customer Churn Signals", "Sales Forecasting", "Public Health Dashboard", "NLP Feedback Miner", "Experiment Analysis", "Data Quality Monitor"][index]}</h4>
-                    <p>{["Predictive analytics", "Time series", "Data visualization", "Natural language", "Product analytics", "Data engineering"][index]}</p>
-                  </div>
-                </div>
-                <h4>Tools and features</h4>
-                <p>Javascript, TypeScript, React, Threejs</p>
+          {services.map((service) => (
+            <article className="work-box service-card" key={service.title}>
+              <div className="work-title">
+                <h3>{service.number}</h3>
+                <h4>{service.title}</h4>
               </div>
-              <WorkImage image="/images/placeholder.webp" alt="" />
-            </div>
+              <div className="service-copy">
+                <h5>{service.subtitle}</h5>
+                <p>{service.description}</p>
+              </div>
+            </article>
           ))}
         </div>
       </div>

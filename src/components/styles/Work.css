@@ -1,9 +1,12 @@
-.work-section h2 {
+.work-heading {
   margin-top: 100px;
-  font-size: 70px;
+  margin-bottom: 30px;
+  font-size: clamp(48px, 6vw, 88px);
+  line-height: 0.95;
   font-weight: 500;
+  flex-shrink: 0;
 }
-.work-section h2 > span {
+.work-heading span {
   color: var(--accentColor);
 }
 .work-section {
@@ -11,6 +14,9 @@
   height: 100vh;
   box-sizing: border-box;
   will-change: transform;
+  overflow: hidden;
+  position: relative;
+  background-color: var(--backgroundColor, #071426);
 }
 .work-container {
   margin: auto;
@@ -22,7 +28,8 @@
 .work-flex {
   width: 100%;
   display: flex;
-  height: 100%;
+  height: calc(100% - 180px);
+  flex-shrink: 0;
   margin-left: -80px;
   padding-right: 120px;
   position: relative;
@@ -37,9 +44,6 @@
   flex-shrink: 0;
   gap: 50px;
   justify-content: start;
-}
-.work-flex .work-box:nth-child(even) {
-  flex-direction: column-reverse;
 }
 .work-flex::before,
 .work-flex::after {
@@ -69,6 +73,44 @@
   line-height: 50px;
   margin: 0;
   font-weight: 600;
+}
+.service-card {
+  justify-content: center;
+  gap: 48px;
+  opacity: 0;
+  transform: translateY(36px);
+  transition:
+    opacity 0.8s ease,
+    transform 0.8s ease;
+}
+.service-card.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+.service-card .work-title {
+  align-items: baseline;
+  margin-bottom: 0;
+}
+.service-card .work-title h4 {
+  color: var(--accentColor);
+  font-size: clamp(32px, 4vw, 64px);
+  letter-spacing: 2px;
+  line-height: 1;
+}
+.service-copy {
+  max-width: 430px;
+}
+.service-copy h5 {
+  margin: 0 0 18px;
+  font-size: 20px;
+  font-weight: 500;
+}
+.service-copy p {
+  margin: 0;
+  color: #eae5ec;
+  font-size: 18px;
+  line-height: 1.6;
+  font-weight: 300;
 }
 
 .work-info h4 {
@@ -137,7 +179,7 @@
     padding-top: 40px;
     padding-bottom: 40px;
   }
-  .work-section h2 {
+  .work-heading {
     font-size: 60px;
     margin-bottom: 30px;
     margin-top: 70px;
@@ -161,7 +203,7 @@
     margin-left: -50px;
     padding-right: 75px;
   }
-  .work-section h2 {
+  .work-heading {
     font-size: 50px;
   }
 }
@@ -174,13 +216,25 @@
     margin-left: -30px;
     padding-right: 45px;
   }
+
+  @media only screen and (max-width: 600px) {
+    .service-card {
+      gap: 30px;
+    }
+    .service-card .work-title h4 {
+      font-size: 34px;
+    }
+    .service-copy p {
+      font-size: 16px;
+    }
+  }
 }
 
 @media only screen and (max-height: 650px) {
   .work-image img {
     max-height: 200px;
   }
-  .work-section h2 {
+  .work-heading {
     font-size: 40px;
     margin-bottom: 20px;
   }
@@ -206,5 +260,55 @@
   }
   .work-flex {
     height: auto;
+  }
+}
+
+/* Keep services in normal document flow so later sections remain reachable. */
+.work-section {
+  height: auto;
+  min-height: 0;
+  overflow: visible;
+  padding: 80px 0 120px;
+}
+.work-container {
+  height: auto;
+}
+.work-heading {
+  margin-top: 0;
+}
+.work-flex {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0;
+  height: auto;
+  margin-left: 0;
+  padding-right: 0;
+}
+.work-flex::before,
+.work-flex::after {
+  display: none;
+}
+.work-box {
+  width: auto;
+  min-height: 360px;
+  padding: 56px 48px;
+  border-right: 1px solid #363636;
+  border-bottom: 1px solid #363636;
+}
+.work-box:nth-child(even) {
+  border-right: 0;
+}
+@media only screen and (max-width: 700px) {
+  .work-section {
+    padding: 60px 0 80px;
+  }
+  .work-flex {
+    grid-template-columns: 1fr;
+  }
+  .work-box,
+  .work-box:nth-child(even) {
+    min-height: 300px;
+    padding: 40px 24px;
+    border-right: 0;
   }
 }
