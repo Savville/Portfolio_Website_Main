@@ -35,10 +35,7 @@ export function initialFX() {
 
   let TextProps = { type: "chars,lines", linesClass: "split-h2" };
 
-  const landingText2 = new SplitText(
-    [".landing-h2-1", ".landing-h2-2"],
-    TextProps
-  );
+  const landingText2 = new SplitText(".landing-h2-1", TextProps);
   gsap.fromTo(
     landingText2.chars,
     { opacity: 0, y: 80, filter: "blur(5px)" },
